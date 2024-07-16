@@ -1,0 +1,63 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col text-center mb-4">
+      <h1 class="display-4 "> Transaction of  Customers Data With Graph</h1>
+      <p class="lead m-3 fs-1">Customer Data</p>
+    </div>
+  </div>
+  <div class="row mb-4 mx-auto">
+    <div class="col-md-6 mb-2">
+      <input 
+        type="text" 
+        class="customer-input" 
+        placeholder="Search by Name...." 
+        [(ngModel)]="SearchByName" 
+        (input)="Search_by_name()" />
+    </div>
+    <div class="col-md-6">
+      <input 
+        type="number" 
+        class="customer-input" 
+        placeholder="Search by Amount Transaction..." 
+        [(ngModel)]="TransactionAmountSearch" 
+        (input)="Search_by_tran()" />
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th scope="col">Coustomer_ID</th>
+                <th scope="col">Coustomer_Name</th>
+                <th scope="col">Total_Amount_Trans</th>
+                <th scope="col">Numbers_Transactions</th>
+                <th scope="col">View Graph</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of customer_serch" >
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.Total_Amount }}</td>
+                <td>{{ customer.Transaction_Number }}</td>
+                <td><button class="btn btn-success" (click)="Select_Customer(customer.id)">Graph</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div  #Graphs>
+        <canvas id="Graph"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
